@@ -11,7 +11,6 @@ import thaigo from '../../static/images/thaigo.jpg';
 import luci from '../../static/images/why.jpg';
 import axios from 'axios';
 import { createSocket, joinChannel, leaveChannel } from '../channels';
-import { set } from 'core-js/core/dict';
 
 const tinLabels = ["Vendo vulcões", "Jogando FF com a Thaiga", "Em call com a Moru"];
 const brttLabels = ["Jogando Dota", "Procurando whats do ESA", "Academia", "Fazendo Tiktok"];

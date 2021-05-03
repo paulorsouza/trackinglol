@@ -4,7 +4,7 @@ defmodule Trackingthegods.Jobs.Spec do
   alias Trackingthegods.Client.Riot
 
   def start_link(_) do
-    GenServer.start_link(__MODULE__, %{})
+    GenServer.start_link(__MODULE__, %{}, name:  __MODULE__)
   end
 
   @impl true
@@ -26,6 +26,11 @@ defmodule Trackingthegods.Jobs.Spec do
     TrackingthegodsWeb.PainPlayersChannel.broadcast_spec(state)
 
     {:noreply, getSpec(state)}
+  end
+
+  @impl true
+  def handle_call(:get, _from, state) do
+    {:reply, state, state}
   end
 
   defp schedule_call() do

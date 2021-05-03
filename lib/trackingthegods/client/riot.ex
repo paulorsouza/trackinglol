@@ -90,7 +90,7 @@ defmodule Trackingthegods.Client.Riot do
   end
 
   def updateSpec(spec, gameLength) do
-    Map.update!(spec, :gameLength, gameLength)
+    Map.update!(spec, :gameLength, fn _ -> gameLength end)
   end
 
   def getBans(specData) do

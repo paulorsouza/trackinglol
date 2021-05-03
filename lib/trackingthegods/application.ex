@@ -14,9 +14,11 @@ defmodule Trackingthegods.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Trackingthegods.PubSub},
       # Start the Endpoint (http/https)
-      TrackingthegodsWeb.Endpoint
+      TrackingthegodsWeb.Endpoint,
       # Start a worker by calling: Trackingthegods.Worker.start_link(arg)
       # {Trackingthegods.Worker, arg}
+      Trackingthegods.Jobs.Rank,
+      Trackingthegods.Jobs.Spec
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

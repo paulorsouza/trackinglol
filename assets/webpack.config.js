@@ -35,6 +35,14 @@ module.exports = (env, options) => {
           }
         },
         {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: "file-loader"
+            }
+          ]
+        },
+        {
           test: /\.[s]?css$/,
           use: [
             MiniCssExtractPlugin.loader,
@@ -43,6 +51,12 @@ module.exports = (env, options) => {
           ],
         }
       ]
+    },
+    resolve: {
+      alias: {
+        react: path.resolve(__dirname, './node_modules/react'),
+        'react-dom': path.resolve(__dirname, './node_modules/react-dom')
+      }
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: '../css/app.css' }),

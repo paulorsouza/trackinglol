@@ -36,6 +36,7 @@ defmodule Trackingthegods.Client.Riot do
       id: ""
     },
     apiId: "RGAPI-8e20e45d-3e3a-4f0e-a5d7-503007a67f78"
+    # apiId: "RGAPI-1c7c5dc7-e491-4767-af44-6687e16c8930"
   }
 
   @dataURL "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
@@ -64,7 +65,7 @@ defmodule Trackingthegods.Client.Riot do
             lp: d["leaguePoints"]
           }
         end)
-        {:ok, List.first(data)}
+        List.first(data)
 
       error -> {:error, error}
     end

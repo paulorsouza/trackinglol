@@ -4,6 +4,8 @@ defmodule TrackingthegodsWeb.UserSocket do
   ## Channels
   # channel "room:*", TrackingthegodsWeb.RoomChannel
 
+  channel "pain:players*", TrackingthegodsWeb.PainPlayersChannel
+
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
   # verification, you can put default assigns into

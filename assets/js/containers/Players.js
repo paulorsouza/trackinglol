@@ -10,6 +10,7 @@ import carioca from '../../static/images/carigod.jpg';
 import thaigo from '../../static/images/thaigo.jpg';
 import luci from '../../static/images/why.jpg';
 import axios from 'axios';
+import { createSocket, joinChannel, leaveChannel } from '../channels';
 
 const tinLabels = ["Vendo vulcões", "Jogando FF com a Thaiga", "Em call com a Moru"];
 const brttLabels = ["Jogando Dota", "Procurando whats do ESA", "Academia", "Fazendo Tiktok"];
@@ -50,20 +51,23 @@ function PlayersContainer(props) {
 
   const preventDefault = (event) => event.preventDefault();
   useEffect(() => {
-    axios.get("/players").then((r) => setState(r.data));
+    // axios.get("/players").then((r) => setState(r.data));
   }, [])
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:40510');
-    ws.onopen = function () {
-      ws.send('connected')
-    }    // event emmited when receiving message 
-    ws.onmessage = ({data}) => {
-      console.log("aqui?");
-      const parsed = JSON.parse(data);
-      setState(parsed.state);
-      setSpec(parsed.spec);
-    }
+    const socket = createSocket();
+    joinChannel(socket, "pain:players", (channel) => {
+      console.log("aqui 1");
+      
+      channel.on('update_rank', rank => {
+        console.log("aqui?????????????");
+        console.log(rank);
+      })
+
+      console.log(channel);
+
+      channel.on("*", g => console.log("eeee"))
+    })
   }, [])
 
   useEffect(() => {

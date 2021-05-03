@@ -18,11 +18,17 @@ defmodule Trackingthegods.Jobs.Rank do
   def handle_info(:ping, state) do
     IO.inspect state
     schedule_call()
-    {:noreply, getRank()}
+    rank = getRank()
+    TrackingthegodsWeb.PainPlayersChannel.broadcast_rank(rank)
+    {:noreply, rank}
+  end
+
+  def handle_info(:get, state) do
+    {:reply, state}
   end
 
   defp schedule_call() do
-    Process.send_after(self(), :ping, 300000)
+    Process.send_after(self(), :ping, 30000)
   end
 
   defp getRank() do

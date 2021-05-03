@@ -50,8 +50,9 @@ function PlayersContainer(props) {
   })
 
   const preventDefault = (event) => event.preventDefault();
+  
   useEffect(() => {
-    // axios.get("/players").then((r) => setState(r.data));
+    axios.get("/api/players").then((r) => setState(r.data));
   }, [])
 
   useEffect(() => {
@@ -89,8 +90,6 @@ function PlayersContainer(props) {
   useEffect(() => {
     setLabels({...labels, robo: roboLabels[getRandomInt(0, roboLabels.length)]})
   }, [spec.robo])
-
-  console.log('porque???')
 
   return (
     <Container fixed>

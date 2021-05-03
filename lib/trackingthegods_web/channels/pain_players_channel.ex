@@ -16,4 +16,8 @@ defmodule TrackingthegodsWeb.PainPlayersChannel do
   def broadcast_rank(state) do
     TrackingthegodsWeb.Endpoint.broadcast("pain:players", "update_rank", state)
   end
+
+  def broadcast_spec(state) do
+    TrackingthegodsWeb.Endpoint.broadcast("pain:players", "update_spec", state)
+  end
 end

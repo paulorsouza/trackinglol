@@ -22,8 +22,9 @@ defmodule Trackingthegods.Jobs.Spec do
 
   @impl true
   def handle_info(:ping, state) do
-    IO.inspect state
     schedule_call()
+    TrackingthegodsWeb.PainPlayersChannel.broadcast_spec(state)
+
     {:noreply, getSpec(state)}
   end
 

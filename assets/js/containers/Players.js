@@ -11,6 +11,7 @@ import thaigo from '../../static/images/thaigo.jpg';
 import luci from '../../static/images/why.jpg';
 import axios from 'axios';
 import { createSocket, joinChannel, leaveChannel } from '../channels';
+import { set } from 'core-js/core/dict';
 
 const tinLabels = ["Vendo vulcões", "Jogando FF com a Thaiga", "Em call com a Moru"];
 const brttLabels = ["Jogando Dota", "Procurando whats do ESA", "Academia", "Fazendo Tiktok"];
@@ -49,8 +50,6 @@ function PlayersContainer(props) {
     robo: roboLabels[getRandomInt(0, roboLabels.length)]
   })
 
-  const preventDefault = (event) => event.preventDefault();
-  
   useEffect(() => {
     axios.get("/api/players").then((r) => setState(r.data));
   }, [])
@@ -58,17 +57,18 @@ function PlayersContainer(props) {
   useEffect(() => {
     const socket = createSocket();
     joinChannel(socket, "pain:players", (channel) => {
-      console.log("aqui 1");
-      
       channel.on('update_rank', rank => {
-        console.log("aqui?????????????");
-        console.log(rank);
+        setState(rank)
       })
 
-      console.log(channel);
-
-      channel.on("*", g => console.log("eeee"))
+      channel.on('update_spec', spec => {
+        setSpec(spec)
+      })
     })
+    return () => {
+      leaveChannel(socket, "pain:players");
+      socket = null;
+    }
   }, [])
 
   useEffect(() => {

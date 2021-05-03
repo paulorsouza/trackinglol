@@ -50,7 +50,17 @@ function PlayersContainer(props) {
   })
 
   useEffect(() => {
-    axios.get("/api/players").then((r) => setState(r.data));
+    Promise.all([
+      axios.get("/api/players"),
+      axios.get("/api/spec")
+    ])
+    .then(([
+      responsePlayers,
+      responseSpec
+    ]) => {
+      setState(responsePlayers.data);
+      setSpec(responseSpec.data);
+    })
   }, [])
 
   useEffect(() => {

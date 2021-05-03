@@ -18,7 +18,7 @@ defmodule TrackingthegodsWeb.Router do
     pipe_through :api
 
     get "/players", PlayerController, :index
-    # get "/spec", SpecController, :index
+    get "/spec", SpecController, :index
   end
 
 

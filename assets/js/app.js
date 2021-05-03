@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import { render } from 'react-dom';
 import AppContainer from './containers/AppContainer';
+import 'fontsource-roboto';
 
 // import whyDidYouRender from '@welldone-software/why-did-you-render';
 // if (process.env.NODE_ENV !== 'production') {

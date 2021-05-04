@@ -13,6 +13,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalParkingIcon from '@material-ui/icons/LocalParking';
 import GifIcon from '@material-ui/icons/Gif';
+import LiveTvIcon from '@material-ui/icons/LiveTv';
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +59,10 @@ const MenuList = (props) => {
         <ListItem button onClick={() => history.push("/mvp")}>
           <ListItemIcon><GifIcon /></ListItemIcon>
           <ListItemText primary="MVP do MSI?" />
+        </ListItem>
+        <ListItem button onClick={() => history.push("/live_stream")}>
+          <ListItemIcon><LiveTvIcon /></ListItemIcon>
+          <ListItemText primary="Nosso Spec" />
         </ListItem>
       </List>
     </div>

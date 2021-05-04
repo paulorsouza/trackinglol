@@ -9,7 +9,6 @@ defmodule TrackingthegodsWeb.PainPlayersChannel do
 
   def handle_out(event, payload, socket = %{topic: "pain:players"}) do
     push(socket, event, payload)
-    IO.inspect event
     {:noreply, socket}
   end
 

@@ -19,6 +19,7 @@ defmodule TrackingthegodsWeb.Router do
 
     get "/players", PlayerController, :index
     get "/spec", SpecController, :index
+    post "/config", RiotConfigController, :update
   end
 
 

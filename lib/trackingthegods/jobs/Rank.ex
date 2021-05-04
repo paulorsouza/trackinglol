@@ -16,7 +16,6 @@ defmodule Trackingthegods.Jobs.Rank do
 
   @impl true
   def handle_info(:ping, state) do
-    IO.inspect state
     schedule_call()
     rank = getRank()
     TrackingthegodsWeb.PainPlayersChannel.broadcast_rank(rank)

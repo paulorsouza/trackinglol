@@ -53,8 +53,10 @@ defmodule Trackingthegods.Client.Riot do
     end
   end
 
+  @spec getData(atom | %{:id => any, optional(any) => any}, any) :: any
   def getData(player, name) do
-    case HTTPoison.get("#{@dataURL}#{player.id}?api_key=#{@metadata.apiId}") do
+    %{key: api_key} = GenServer.call(Trackingthegods.Jobs.RiotConfig, :get)
+    case HTTPoison.get("#{@dataURL}#{player.id}?api_key=#{api_key}") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         data = Enum.map(Jason.decode!(body), fn d ->
           %{
@@ -72,7 +74,8 @@ defmodule Trackingthegods.Client.Riot do
   end
 
   def getSpec(player) do
-    case HTTPoison.get("#{@specURL}#{player.id}?api_key=#{@metadata.apiId}") do
+    %{key: api_key} = GenServer.call(Trackingthegods.Jobs.RiotConfig, :get)
+    case HTTPoison.get("#{@specURL}#{player.id}?api_key=#{api_key}") do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, Jason.decode!(body)}
       error -> {:error, error}

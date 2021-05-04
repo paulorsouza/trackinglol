@@ -17,6 +17,7 @@ defmodule Trackingthegods.Application do
       TrackingthegodsWeb.Endpoint,
       # Start a worker by calling: Trackingthegods.Worker.start_link(arg)
       # {Trackingthegods.Worker, arg}
+      Trackingthegods.Jobs.RiotConfig,
       Trackingthegods.Jobs.Rank,
       Trackingthegods.Jobs.Spec
     ]

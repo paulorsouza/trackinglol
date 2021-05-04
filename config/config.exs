@@ -12,9 +12,7 @@ config :trackingthegods,
 
 # Configures the endpoint
 config :trackingthegods, TrackingthegodsWeb.Endpoint,
-  http: [port: System.get_env("PORT") || 4000],
-  url: [scheme: "https", host: System.get_env("URL_HOST"), port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "localhost"],
   secret_key_base: "+STatWzIVjiF311BT6SnsaR5nyoO4oPKOqFL6/QCt7KlYAb3LGu3uZLL87i/iGIn",
   render_errors: [view: TrackingthegodsWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Trackingthegods.PubSub,

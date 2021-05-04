@@ -13,7 +13,6 @@ const joinChannel = (socket, channelName, onJoin) => {
      .receive('ignore', err => console.log(err))
      .receive('error', err => console.log(err))
      .receive('ok', () => {
-       console.log("its ok?")
        onJoin(channel);
      });
   }

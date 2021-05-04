@@ -35,7 +35,7 @@ defmodule Trackingthegods.Client.Riot do
     test: %{
       id: ""
     },
-    apiId: "RGAPI-8e20e45d-3e3a-4f0e-a5d7-503007a67f78"
+    apiId: "RGAPI-04161793-d87f-4392-9d5d-aa38165054f7"
     # apiId: "RGAPI-1c7c5dc7-e491-4767-af44-6687e16c8930"
   }
 
@@ -98,7 +98,7 @@ defmodule Trackingthegods.Client.Riot do
     Enum.map(bans, fn b ->
       team = if(b["teamId"] == 100) do "Blue" else "Red" end
       %{
-        champ: Champions.get(b["championId"]),
+        champ: Champions.get(Integer.to_string(b["championId"])),
         team: team
       }
     end)
@@ -110,7 +110,7 @@ defmodule Trackingthegods.Client.Riot do
     Enum.map(participants, fn p ->
       team = if(p["teamId"] == 100) do "Blue" else "Red" end
       %{
-        champ: Champions.get(p["championId"]),
+        champ: Champions.get(Integer.to_string(p["championId"])),
         team: team,
         summonerName: p["summonerName"],
         summonerId: p["summonerId"]

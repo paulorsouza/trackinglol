@@ -162,6 +162,7 @@ defmodule Trackingthegods.Champions do
 
   def get(key) do
     champs = getMap()
-    champs[key];
+    IO.inspect key
+    Map.get(champs, key)
   end
 end

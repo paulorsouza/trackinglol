@@ -34,7 +34,7 @@ defmodule Trackingthegods.Jobs.Spec do
   end
 
   defp schedule_call() do
-    Process.send_after(self(), :ping, 6000000)
+    Process.send_after(self(), :ping, 40_000)
   end
 
   defp getSpec(state) do

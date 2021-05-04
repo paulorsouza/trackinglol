@@ -28,7 +28,7 @@ defmodule Trackingthegods.Jobs.Rank do
   end
 
   defp schedule_call() do
-    Process.send_after(self(), :ping, 30000000)
+    Process.send_after(self(), :ping, 300_000)
   end
 
   defp getRank() do

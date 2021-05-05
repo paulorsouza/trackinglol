@@ -10,6 +10,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 function mobaLink(nick) {
   return `https://app.mobalytics.gg/lol/profile/euw/${nick}/overview`;
@@ -61,7 +65,18 @@ const SpecDialog = (props) => {
       fullScreen={fullScreen} 
       open={!!props.player}
       onClose={props.onClose}
-    >
+      
+    > 
+      <AppBar>
+        <Toolbar>
+          <IconButton edge="start" color="inherit" onClick={props.onClose} aria-label="close">
+            <CloseIcon />
+          </IconButton>
+          <Typography variant="h6">
+            Partida em andamento
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <DialogContent>
         <div>
           <List>

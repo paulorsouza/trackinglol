@@ -5,6 +5,7 @@ const PlayersContainer = lazy(() => import('./containers/Players'));
 const MvpGifScan = lazy(() => import('./containers/MvpGifScan'));
 const TeamGifScan = lazy(() => import('./containers/TeamGifScan'));
 const LiveStream = lazy(() => import('./containers/LiveStream'));
+const SpecDownload = lazy(() => import('./containers/SpecDownload'));
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
           <Route path="/live_stream" component={LiveStream} />
           <Route path="/mvp" component={MvpGifScan} />
           <Route path="/best_team" component={TeamGifScan} />
+          <Route path="/download" component={SpecDownload} />
           <Route path="/" component={PlayersContainer} />
         </Switch>
       </Suspense>
